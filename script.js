@@ -239,10 +239,12 @@ function updateClock() {
 // Settings event listeners
 settingsToggle.addEventListener('click', () => {
     settingsPanel.classList.remove('hidden');
+    settingsPanel.setAttribute('aria-hidden', 'false');
 });
 
 closeSettings.addEventListener('click', () => {
     settingsPanel.classList.add('hidden');
+    settingsPanel.setAttribute('aria-hidden', 'true');
 });
 
 showDigital.addEventListener('change', (e) => {
