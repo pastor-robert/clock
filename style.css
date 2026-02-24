@@ -155,9 +155,10 @@ body {
     background: #444;
 }
 
+#reset-settings,
 #close-settings {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 0.75rem;
     background: #333;
     border: 1px solid #555;
@@ -167,6 +168,7 @@ body {
     cursor: pointer;
 }
 
+#reset-settings:hover,
 #close-settings:hover {
     background: #444;
 }

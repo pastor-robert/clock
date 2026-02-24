@@ -310,6 +310,13 @@ clearBgImage.addEventListener('click', () => {
     updateStyles();
 });
 
+document.getElementById('reset-settings').addEventListener('click', () => {
+    localStorage.removeItem('clockSettings');
+    settings = { ...defaultSettings };
+    applySettings();
+    updateClock();
+});
+
 // Handle window resize for analog clock
 window.addEventListener('resize', () => {
     if (settings.showAnalog) {
