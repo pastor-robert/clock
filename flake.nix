@@ -31,13 +31,21 @@
               git
               gh
 
-              # Node.js (for npm packages if needed)
+              # Node.js and npm for linting tools
               nodejs
+
+              # HTML validation
+              html-tidy
+
+              # Linting (via npm, but can also use these directly)
+              nodePackages.eslint
+              nodePackages.stylelint
             ];
 
             shellHook = ''
               echo "Clock dev environment"
               echo "Run 'python3 -m http.server 8000' to start local server"
+              echo "Run 'npm test' to run all linting checks"
             '';
           };
         });

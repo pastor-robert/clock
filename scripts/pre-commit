@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Running pre-commit checks..."
+
+# Check if we're in nix develop shell or have required tools
+check_tool() {
+    if ! command -v "$1" &> /dev/null; then
+        echo "Warning: $1 not found. Run 'nix develop' for full checks."
+        return 1
+    fi
+    return 0
+}
+
+EXIT_CODE=0
+
+# HTML validation with tidy
+if check_tool tidy; then
+    echo "Checking HTML..."
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.html$'); do
+        if ! tidy -q -e "$file" 2>&1 | grep -v "Info:"; then
+            true  # tidy returns non-zero even for warnings
+        fi
+    done
+fi
+
+# JavaScript syntax check with Node
+if check_tool node; then
+    echo "Checking JavaScript syntax..."
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.js$'); do
+        if ! node --check "$file"; then
+            echo "Syntax error in $file"
+            EXIT_CODE=1
+        fi
+    done
+fi
+
+# ESLint check if available
+if check_tool eslint; then
+    echo "Running ESLint..."
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.js$'); do
+        if ! eslint "$file"; then
+            EXIT_CODE=1
+        fi
+    done
+fi
+
+# CSS validation with stylelint if available
+if check_tool stylelint; then
+    echo "Running Stylelint..."
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.css$'); do
+        if ! stylelint "$file"; then
+            EXIT_CODE=1
+        fi
+    done
+fi
+
+# JSON validation
+if check_tool jq; then
+    echo "Checking JSON..."
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.json$'); do
+        if ! jq empty "$file" 2>/dev/null; then
+            echo "Invalid JSON: $file"
+            EXIT_CODE=1
+        fi
+    done
+fi
+
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "All checks passed!"
+else
+    echo "Some checks failed."
+fi
+
+exit $EXIT_CODE
