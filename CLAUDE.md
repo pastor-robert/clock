@@ -15,10 +15,19 @@ A static website displaying a digital clock. The default view is intentionally m
 
 ## Development
 
-Open `index.html` directly in a browser, or serve with any static server:
+Enter the development environment:
+```
+nix develop
+```
+
+This provides python3, jq, curl, git, gh, and nodejs.
+
+Serve locally:
 ```
 python3 -m http.server 8000
 ```
+
+Or open `index.html` directly in a browser.
 
 ## Architecture
 
