@@ -324,6 +324,20 @@ window.addEventListener('resize', () => {
     }
 });
 
+// Generate QR code
+function generateQRCode() {
+    const qrContainer = document.getElementById('qr-code');
+    if (qrContainer.children.length === 0) {
+        const qr = qrcode(0, 'M');
+        qr.addData(window.location.href);
+        qr.make();
+        qrContainer.innerHTML = qr.createSvgTag(4);
+    }
+}
+
+// Generate QR code when settings panel opens
+settingsToggle.addEventListener('click', generateQRCode);
+
 // Initialize
 populateTimezones();
 applySettings();

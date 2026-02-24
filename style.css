@@ -173,6 +173,25 @@ body {
     background: #444;
 }
 
+/* QR code section */
+.qr-section {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+}
+
+#qr-code {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+#qr-code svg {
+    background: #fff;
+    padding: 8px;
+    border-radius: 4px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 480px) {
     #settings-toggle {
