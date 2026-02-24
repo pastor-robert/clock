@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <main id="clock-display">
+            <div id="digital-clock"></div>
+            <div id="date-display" class="hidden"></div>
+            <canvas id="analog-clock" class="hidden"></canvas>
+        </main>
+
+        <button id="settings-toggle" aria-label="Settings">⚙</button>
+
+        <div id="settings-panel" class="hidden">
+            <h2>Settings</h2>
+
+            <div class="setting-group">
+                <label>
+                    <input type="checkbox" id="show-analog"> Show analog clock
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label>
+                    <input type="checkbox" id="show-date"> Show date
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label>
+                    <input type="checkbox" id="show-seconds" checked> Show seconds
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label for="timezone">Time zone</label>
+                <select id="timezone"></select>
+            </div>
+
+            <div class="setting-group">
+                <label for="font-select">Font</label>
+                <select id="font-select">
+                    <option value="system-ui">System</option>
+                    <option value="'Courier New', monospace">Monospace</option>
+                    <option value="'Georgia', serif">Serif</option>
+                    <option value="'Arial', sans-serif">Sans-serif</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="text-color">Text color</label>
+                <input type="color" id="text-color" value="#ffffff">
+            </div>
+
+            <div class="setting-group">
+                <label for="bg-color">Background color</label>
+                <input type="color" id="bg-color" value="#000000">
+            </div>
+
+            <div class="setting-group">
+                <label for="bg-image">Background image URL</label>
+                <input type="url" id="bg-image" placeholder="https://...">
+                <button id="clear-bg-image">Clear</button>
+            </div>
+
+            <button id="close-settings">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

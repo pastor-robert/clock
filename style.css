@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: #ffffff;
+    --bg-color: #000000;
+    --font-family: system-ui;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+#digital-clock {
+    font-size: clamp(3rem, 20vw, 20rem);
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+#date-display {
+    font-size: clamp(1rem, 4vw, 4rem);
+    opacity: 0.8;
+}
+
+#analog-clock {
+    max-width: 90vmin;
+    max-height: 50vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Settings toggle button */
+#settings-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s, background 0.3s;
+}
+
+#settings-toggle:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Settings panel */
+#settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(100vw, 320px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#settings-panel h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.setting-group {
+    margin-bottom: 1.25rem;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.setting-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+.setting-group select,
+.setting-group input[type="url"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.setting-group input[type="color"] {
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.setting-group button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.setting-group button:hover {
+    background: #444;
+}
+
+#close-settings {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#close-settings:hover {
+    background: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    #settings-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+
+    #settings-panel {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-aspect-ratio: 2/1) {
+    /* Ultra-wide displays */
+    #clock-display {
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+    #analog-clock {
+        max-height: 70vh;
+    }
+}
