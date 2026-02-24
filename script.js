@@ -7,6 +7,7 @@ const settingsPanel = document.getElementById('settings-panel');
 const closeSettings = document.getElementById('close-settings');
 
 // Setting inputs
+const showDigital = document.getElementById('show-digital');
 const showAnalog = document.getElementById('show-analog');
 const showDate = document.getElementById('show-date');
 const showSeconds = document.getElementById('show-seconds');
@@ -19,6 +20,7 @@ const clearBgImage = document.getElementById('clear-bg-image');
 
 // Default settings
 const defaultSettings = {
+    showDigital: true,
     showAnalog: false,
     showDate: false,
     showSeconds: true,
@@ -57,6 +59,7 @@ function populateTimezones() {
 // Apply settings to UI
 function applySettings() {
     // Checkboxes
+    showDigital.checked = settings.showDigital;
     showAnalog.checked = settings.showAnalog;
     showDate.checked = settings.showDate;
     showSeconds.checked = settings.showSeconds;
@@ -79,6 +82,7 @@ function applySettings() {
 
 // Update element visibility
 function updateVisibility() {
+    digitalClock.classList.toggle('hidden', !settings.showDigital);
     analogClock.classList.toggle('hidden', !settings.showAnalog);
     dateDisplay.classList.toggle('hidden', !settings.showDate);
 }
@@ -239,6 +243,13 @@ settingsToggle.addEventListener('click', () => {
 
 closeSettings.addEventListener('click', () => {
     settingsPanel.classList.add('hidden');
+});
+
+showDigital.addEventListener('change', (e) => {
+    settings.showDigital = e.target.checked;
+    saveSettings(settings);
+    updateVisibility();
+    updateClock();
 });
 
 showAnalog.addEventListener('change', (e) => {
