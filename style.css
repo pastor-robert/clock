@@ -73,7 +73,7 @@ body {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
 }
@@ -87,7 +87,7 @@ body {
     height: 3rem;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     color: var(--text-color);
     font-size: 1.5rem;
     cursor: pointer;
@@ -97,7 +97,7 @@ body {
 
 #settings-toggle:hover {
     opacity: 1;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 20%);
 }
 
 /* Settings panel */
@@ -107,11 +107,11 @@ body {
     right: 0;
     width: min(100vw, 320px);
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgb(0 0 0 / 95%);
     color: #fff;
     padding: 2rem;
     overflow-y: auto;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: -4px 0 20px rgb(0 0 0 / 50%);
 }
 
 #settings-panel h2 {
