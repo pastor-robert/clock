@@ -226,6 +226,15 @@ body {
         gap: 3rem;
     }
 
+    #digital-clock {
+        font-size: clamp(3rem, 15vh, 15rem);
+    }
+
+    #date-display {
+        font-size: clamp(0.75rem, 2.5vh, 2.5rem);
+        align-self: center;
+    }
+
     #analog-clock {
         max-height: 70vh;
     }
