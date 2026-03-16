@@ -340,6 +340,11 @@ function generateQRCode() {
 // Generate QR code when settings panel opens
 settingsToggle.addEventListener('click', generateQRCode);
 
+// Register service worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
 // Initialize
 populateTimezones();
 applySettings();
