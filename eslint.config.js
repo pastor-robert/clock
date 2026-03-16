@@ -13,6 +13,7 @@ export default [
         localStorage: "readonly",
         Intl: "readonly",
         setInterval: "readonly",
+        navigator: "readonly",
         qrcode: "readonly"
       }
     },
