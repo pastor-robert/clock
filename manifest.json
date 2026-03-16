@@ -2,7 +2,7 @@
   "name": "Clock",
   "short_name": "Clock",
   "description": "A simple, customizable digital and analog clock",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",

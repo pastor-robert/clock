@@ -1,11 +1,11 @@
-const CACHE_NAME = 'clock-v3';
+const CACHE_NAME = 'clock-v4';
 const ASSETS = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/script.js',
-    '/icon.svg',
-    '/manifest.json',
+    './',
+    './index.html',
+    './style.css',
+    './script.js',
+    './icon.svg',
+    './manifest.json',
     'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js'
 ];
 
